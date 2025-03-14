@@ -244,7 +244,6 @@ async def account_login(bot: Client, m: Message):
   
     try:
         for i in range(count - 1, int(input9.text)):
-        #for i in range(count - 1, len(links)):    
 
             V = links[i][1].replace("file/d/","uc?export=download&id=")\
                .replace("www.youtube-nocookie.com/embed", "youtu.be")\
@@ -295,8 +294,8 @@ async def account_login(bot: Client, m: Message):
                 print("counted 2 ")
             
             try:   
-                cc = f' **➭ Index » {str(count).zfill(3)} **\n**➭ Title »  {name1}.mkv**\n\n**➭ 𝐁𝐚𝐭𝐜𝐡 » {b_name} **\n**➭ Quality » {raw_text2}**\n\n✨ **𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}**\n**━━━━━━━✦✗✦━━━━━━━**'
-                cc1 = f'**➭ Index » {str(count).zfill(3)} **\n**➭ Title » {name1}.pdf** \n\n**➭ 𝐁𝐚𝐭𝐜𝐡 »  {b_name}**\n\n✨ **𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}**\n**━━━━━━━✦✗✦━━━━━━━**'                            
+                cc = f' **➭ Index » {str(count)} /  {len(links)} **\n**➭ Title »  {name1}.mkv**\n\n**➭ 𝐁𝐚𝐭𝐜𝐡 » {b_name} **\n**➭ Quality » {raw_text2}**\n\n✨ **𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}**\n**━━━━━━━✦✗✦━━━━━━━**'
+                cc1 = f'**➭ Index » {str(count)} /  {len(links)} **\n**➭ Title » {name1}.pdf** \n\n**➭ 𝐁𝐚𝐭𝐜𝐡 »  {b_name}**\n\n✨ **𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}**\n**━━━━━━━✦✗✦━━━━━━━**'                            
                
                 if "drive" in url:
                     try:
@@ -345,7 +344,7 @@ async def account_login(bot: Client, m: Message):
                         continue
 
                 else:
-                    prog = await m.reply_text(f"📥 **Downloading **\n\n**➭ Index » {str(count).zfill(3)} /  {len(links)}**\n**➭ Video Name » ** `{name}`\n**➭ Quality** » `{raw_text2}`\n**➭ Thumbnail »** `{input6.text}` \n\n✨ **Bot Made by @AllCourseADMIN_BOT**\n**━━━━━━━✦✗✦━━━━━━━**")
+                    prog = await m.reply_text(f"📥 **Downloading **\n\n**➭ Index » {str(count)} /  {len(links)}**\n**➭ Title » ** `{name}`\n**➭ Quality** » `{raw_text2}`\n**➭ Thumbnail »** `{input6.text}` \n\n✨ **Bot Made by 𝙎𝘼𝙄𝙉𝙄 𝘽𝙊𝙏𝙎*\n**━━━━━━━✦✗✦━━━━━━━**")
                     time.sleep(2)
                     res_file = await helper.drm_download_video(url,quality, name,key)
                     filename = res_file
