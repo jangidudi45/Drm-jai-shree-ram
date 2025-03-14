@@ -18,7 +18,7 @@ from logger import logging
 import time
 import asyncio
 from pyrogram.types import User, Message
-from config import *
+from config import API_ID, API_HASH, BOT_TOKEN, OWNER
 import sys
 import os
 import random
@@ -29,16 +29,14 @@ from bs4 import BeautifulSoup
 import datetime
 import aiohttp
 
-bot = Client("bot",
-             bot_token= "7601649831:AAEMQ9chNVKZe2hm4wEHN4nmgBd8vqeOvKI", 
-             api_id= 26513107,
-             api_hash= "f14ce4b58dc8812cfc9665588472f2d4")
-auth_users = [1928404158, 5326215308, 8019643178]
-
-# counter 
-global videocount, pdfcount  # Declare videocount and pdfcount as global variables
-
-#url var 
+# Initialize the bot
+bot = Client(
+    "bot",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN
+)
+ 
 pwdl = os.environ.get("api")
 
 processing_request = False  # Variable to track if a request is being processed
