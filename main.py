@@ -124,12 +124,15 @@ async def account_login(bot: Client, m: Message):
             pdfcount = 0
             with open(x, "r", encoding="utf-8") as f:
                 for line in f:
-                    link = line.strip().split("://", 1)
+                    link = line.strip()
+                    if isinstance(link, str):
+                        link = link.split("://", 1)
                     links.append(link)
-                    if ".pdf" in link[1]:
+                    if isinstance(link, list) and len(link) > 1 and ".pdf" in link[1]:
                         pdfcount += 1 
                     else:
                         videocount += 1
+            
         except Exception as e:
             await m.reply_text("Error occurred while processing the file.🥲")
             print("Error:", e)
