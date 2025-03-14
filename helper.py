@@ -19,8 +19,8 @@ import httpx
 import re
 
 
-pw_token = os.environ.get("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzUwMzg2ODUuNjg4LCJkYXRhIjp7Il9pZCI6IjY3NjE1YmRlYmZkZDMwMDdlMTI2ZTBmMiIsInVzZXJuYW1lIjoiOTQxMzEwMDc3MyIsImZpcnN0TmFtZSI6IkFtYXIiLCJsYXN0TmFtZSI6Ikd1cmphciIsIm9yZ2FuaXphdGlvbiI6eyJfaWQiOiI1ZWIzOTNlZTk1ZmFiNzQ2OGE3OWQxODkiLCJ3ZWJzaXRlIjoicGh5c2ljc3dhbGxhaC5jb20iLCJuYW1lIjoiUGh5c2ljc3dhbGxhaCJ9LCJyb2xlcyI6WyI1YjI3YmQ5NjU4NDJmOTUwYTc3OGM2ZWYiXSwiY291bnRyeUdyb3VwIjoiSU4iLCJ0eXBlIjoiVVNFUiJ9LCJpYXQiOjE3MzQ0MzM4ODV9.mU8kACHuqiWyWbD0wQpG3A86cezFS7GjINfCRN3N1Mg")
-#pw_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjAwOTY5OTkuODczLCJkYXRhIjp7Il9pZCI6IjYwY2UxMzU0ZDdlMjNjMDAxMTBkYzU1OCIsInVzZXJuYW1lIjoiOTk2NzI2MzMwMyIsImZpcnN0TmFtZSI6IkRldmFuc2giLCJsYXN0TmFtZSI6IkJoYW51c2hhbGkiLCJvcmdhbml6YXRpb24iOnsiX2lkIjoiNWViMzkzZWU5NWZhYjc0NjhhNzlkMTg5Iiwid2Vic2l0ZSI6InBoeXNpY3N3YWxsYWguY29tIiwibmFtZSI6IlBoeXNpY3N3YWxsYWgifSwiZW1haWwiOiJkZXZhbnNoYmhhbnVzaGFsaTEyQGdtYWlsLmNvbSIsInJvbGVzIjpbIjViMjdiZDk2NTg0MmY5NTBhNzc4YzZlZiJdLCJ0eXBlIjoiVVNFUiJ9LCJpYXQiOjE3MTk0OTIxOTl9.T4p_zzFHmL1FYIh7ZddaytjQuvImofVluswVPF1_GFM"
+pw_token = os.environ.get("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzUwMzg2ODUuNjg4LCJkYXRhIjp7Il9pZCI6IjY3NjE1YmRlYmZkZDMwMDdlMTI2ZTBmMiIsInVzZXJuYW1lIjoiOTQxMzEwMDc3MyIsImZpcnN0TmFtZSI6[...]
+#pw_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjAwOTY5OTkuODczLCJkYXRhIjp7Il9pZCI6IjYwY2UxMzU0ZDdlMjNjMDAxMTBkYzU1OCIsInVzZXJuYW1lIjoiOTk2NzI2MzMwMyIsImZpcnN0TmFtZSI6IkRldmFuc2giLC[...
 
 def duration(filename):
     result = subprocess.run([
@@ -87,7 +87,7 @@ def time_name():
 
 async def download_video(url, cmd, name):
     time.sleep(2)
-    download_cmd = f'{cmd} -R infinite --fragment-retries 25 --socket-timeout 50 --external-downloader aria2c --downloader-args "aria2c: -x 16 -j 32" --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"'
+    download_cmd = f'{cmd} -R infinite --fragment-retries 25 --socket-timeout 50 --external-downloader aria2c --downloader-args "aria2c: -x 16 -j 32" --user-agent "Mozilla/5.0 (Windows NT 10.0; Wi[...]
     global failed_counter
     print(download_cmd)
     logging.info(download_cmd)
@@ -102,7 +102,7 @@ async def download_video(url, cmd, name):
             return name
         elif os.path.isfile(f"{name}.webm"):
             return f"{name}.webm"
-        name = name.split(".")[0]
+        name = name.split(".")[0] if isinstance(name, str) else name
         if os.path.isfile(f"{name}.mkv"):
             return f"{name}.mkv"
         elif os.path.isfile(f"{name}.mp4"):
@@ -113,7 +113,6 @@ async def download_video(url, cmd, name):
         return name
     except FileNotFoundError as exc:
         return os.path.isfile.splitext[0] + "." + "mp4"
-
 
 
 
@@ -246,7 +245,8 @@ async def get_drm_keys(url: str):
 async def drm_download_video(url, qual, name, keys):
 
     print(keys)
-    keys = keys.split(":")
+    if isinstance(keys, str):
+        keys = keys.split(":") # Ensure keys is a string
     if len(keys) != 2:
         print("Error: Two keys must be provided separated by a colon.")
         return None
@@ -266,7 +266,7 @@ async def drm_download_video(url, qual, name, keys):
         nqual="240"
     else :
         nqual="480"                
-  
+
     try:
         # Get the directory of the current script
         current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -292,9 +292,7 @@ async def drm_download_video(url, qual, name, keys):
         print(f"File not found: {exc}")
         return os.path.splitext(name)[0] + ".mp4", None
 
-   
 
-    
 async def send_vid(bot: Client, m: Message, cc, filename, thumb, name,thumb2):
     reply = await m.reply_text(f"**⚡️ Starting Uploading ...** - `{name}`")
     try:
