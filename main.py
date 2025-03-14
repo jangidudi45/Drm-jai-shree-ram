@@ -336,7 +336,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"📥 **Downloading **\n\n**➭ Index » {str(count)} /  {len(links)}**\n**➭ Title » ** `{name}`\n**➭ Quality** » `{raw_text2}`\n**➭ Thumbnail » ** `{thumb}`')
+                    prog = await m.reply_text(f"📥 **Downloading **\n\n**➭ Index » {str(count)} /  {len(links)}**\n**➭ Title » ** `{name}`\n**➭ Quality** » `{raw_text2}`\n**➭ Thumbnail » ** `{thumb}`")
                     time.sleep(2)
                     res_file = await helper.drm_download_video(url,quality, name,key)
                     filename = res_file
