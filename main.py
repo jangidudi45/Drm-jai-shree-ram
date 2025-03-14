@@ -211,7 +211,7 @@ async def account_login(bot: Client, m: Message):
     thumb = input6.text
     thumb2 = input6.text
 
-    await editable.edit("**• Same thumb on pdf as video, send : `yes` \n\nIf don't want thumb on pdf : SEND `no` \n\n• If you Want other thumbnail : Send `custom`**")  
+    await editable.edit("**Same thumb on pdf as video** : SEND `yes` \n\n**If don't want thumb on pdf** : SEND `no` \n\n**If you Want other thumbnail **: SEND `custom`")  
     input7 = message = await bot.listen(editable.chat.id)
     raw_text7 = input7.text.lower()  # Convert to lowercase
     await input7.delete(True)
