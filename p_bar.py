@@ -95,13 +95,10 @@ async def progress_bar(current, total, reply, start):
             completed_length = int(current * bar_length / total)
             remaining_length = bar_length - completed_length
             #progress_bar = "▰" * completed_length + "▱" * remaining_length
-            #progress_bar = "**✦**" * completed_length + "**✧**" * remaining_length
-            progress_bar = "**►**" * completed_length + "**▷**" * remaining_length
+            progress_bar = "**✦**" * completed_length + "**✧**" * remaining_length
             
             try:
                   
-                await reply.edit(f'**╭──⌈📤 𝙐𝙥𝙡𝙤𝙖𝙙𝙞𝙣𝙜 📤⌋──╮ \n┣⪼ [ {progress_bar} ]\n┣⪼ 🚀 𝙎𝙥𝙚𝙚𝙙 : {sp} \n┣⪼ 📈 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 : {perc} \n┣⪼ ⏳ 𝙇𝙤𝙖𝙙𝙚𝙙 : {cur}\n┣⪼ 🍁 𝙎𝙞𝙯𝙚 :  {tot} \n┣⪼ 🕛 𝙀𝙏𝘼 : {eta} \n╰────⌈ **✪ @AllCourseADMIN_BOT **✪** ⌋────╯**\n') 
-                #await reply.edit(f'`┌ 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 📈 -【 {perc} 】\n├ 𝙎𝙥𝙚𝙚𝙙 🧲 -【 {sp} 】\n└ 𝙎𝙞𝙯𝙚 📂 -【 {cur} / {tot} 】`')
-         #       await reply.edit(f'`╭──⌈📤 𝙐𝙥𝙡𝙤𝙖𝙙𝙞𝙣𝙜 📤⌋──╮ \n├{progress_bar}\n├ 𝙎𝙥𝙚𝙚𝙙 : {sp} \n├ 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 : {perc} \n├ 𝙇𝙤𝙖𝙙𝙚𝙙 : {cur}\n├ 𝙎𝙞𝙯𝙚 :  {tot} \n├ 𝙀𝙏𝘼 : {eta} \n╰─⌈ Bot Made By @AllCourseADMIN_BOT ⌋─╯`\n') 
+                await reply.edit(f'**╭──⌈📤 𝙐𝙥𝙡𝙤𝙖𝙙𝙞𝙣𝙜 📤⌋──╮ \n┣⪼ [ {progress_bar} ]\n┣⪼ 🚀 𝙎𝙥𝙚𝙚𝙙 : {sp} \n┣⪼ 📈 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 : {perc} \n┣⪼ ⏳ 𝙇𝙤𝙖𝙙𝙚𝙙 : {cur}\n┣⪼ 🍁 𝙎𝙞𝙯𝙚 :  {tot} \n┣⪼ 🕛 𝙀𝙏𝘼 : {eta} \n╰────⌈ 🇸‌🇦‌🇮‌🇳‌🇮‌ ⌋────╯**\n') 
             except FloodWait as e:
                 time.sleep(e.x)
