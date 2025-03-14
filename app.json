@@ -1,18 +1,16 @@
 
 {
 
-    "name": "Unkniwntxt",
+    "name": "DRM BOT",
 
     "description": "Download videos from various websites using this telegram bot",
 
-    "repository": "https://github.com/devansh-op/txt-v2",
+    "repository": "https://github.com/nikhilsaini098/Drm-jai-shree-ram",
     "buildpacks":[
         {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+            "url": "https://github.com/nikhilsaini098/Drm-jai-shree-ram"
         },
-        {
-            "url": "https://github.com/amivin/aria2-heroku.git"
-        },
+        
         {
             "url": "heroku/python"
         }
@@ -56,9 +54,6 @@
             "url": "heroku/python"
 
         },
-       {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
-       }
        
     ]
 
