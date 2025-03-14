@@ -333,6 +333,7 @@ async def account_login(bot: Client, m: Message):
                         count += 1
                         time.sleep(2)
                     except FloodWait as e:
+                        await m.reply_text(str(e))
                         time.sleep(e.x)
                         continue
                 else:
@@ -345,7 +346,7 @@ async def account_login(bot: Client, m: Message):
                     await helper.send_vid(bot, m, cc, filename, thumb, name, thumb2)
                     count += 1
             except Exception as e:
-                await m.reply_text(f"**This #Failed File is Counted**\n**Name** =>> `{name1}`**")
+                await m.reply_text(f"**This #Failed File is Counted**\n**Name** =>> `{name1}`\n\n ** Fail reason »** {e}")
                 count += 1
                 continue
     except Exception as e:
