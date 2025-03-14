@@ -261,6 +261,9 @@ async def account_login(bot: Client, m: Message):
             elif 'videos.classplusapp' in url:
                 url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgzNjkyMTIsIm9yZ0luZGV4IjoxLCJleHAiOjE2MzI3NTg1Nzl9.7s2Pfl6A1q8UA5y7uZJ9sW-Jt7S-BZ5u9oa0Lvvji4Q'}).json()['url']
 
+            # Fetch the DRM keys for the URL
+            key = await get_drm_keys(url)
+            
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "")
             name = f'{name1[:60]}'
 
