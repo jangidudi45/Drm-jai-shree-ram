@@ -1,8 +1,5 @@
-# txt uploader
+# DRM .txt uploader
 
-# Made By. #Amar
-
-
-## HEROKU 
+# Made By. https://github.com/nikhilsaini098/
 
 
